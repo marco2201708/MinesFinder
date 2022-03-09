@@ -7,6 +7,7 @@ public class JanelaDeJogo extends JFrame {
         // Destrói esta janela, removendo-a completamente da memória.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(false); // opcional. Pode optar por fazer depois.
+
     }
 
 }

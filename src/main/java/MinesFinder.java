@@ -1,16 +1,19 @@
+import com.sun.nio.sctp.MessageInfo;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MinesFinder extends JFrame {
     private JPanel painelPrincipal;
     private JLabel MinesFinder;
     private JButton btnFacil;
-    private JButton jogoMédioButton;
+    private JButton btnMedio;
     private JButton jogoDifícilButton;
     private JButton btnSair;
     private JLabel Recordes;
     private JanelaDeJogo jogoFacil;
+    private JanelaDeJogo jogoMedio;
+    private JanelaDeJogo jogoDificil;
 
     public MinesFinder(String title){
         super(title);
@@ -19,7 +22,12 @@ public class MinesFinder extends JFrame {
         pack();
         btnSair.addActionListener(this::btnSairActionPreformed);
         jogoFacil = new JanelaDeJogo();
+        jogoFacil.setSize(800,600);
         btnFacil.addActionListener(this::btnJogoFacil);
+        jogoMedio = new JanelaDeJogo();
+        jogoMedio.setSize(800,600);
+        btnMedio.addActionListener(this::btnJogoMedio);
+
     }
 
     private void btnSairActionPreformed(ActionEvent e){
@@ -28,6 +36,9 @@ public class MinesFinder extends JFrame {
 
     private void btnJogoFacil(ActionEvent e){
         jogoFacil.setVisible(true);
+    }
+    private void btnJogoMedio(ActionEvent e){
+        jogoMedio.setVisible(true);
     }
 
     public static void main(String args[]){
