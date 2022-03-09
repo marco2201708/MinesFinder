@@ -1,5 +1,3 @@
-import com.sun.nio.sctp.MessageInfo;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -8,7 +6,7 @@ public class MinesFinder extends JFrame {
     private JLabel MinesFinder;
     private JButton btnFacil;
     private JButton btnMedio;
-    private JButton jogoDifícilButton;
+    private JButton btnDificil;
     private JButton btnSair;
     private JLabel Recordes;
     private JanelaDeJogo jogoFacil;
@@ -21,13 +19,9 @@ public class MinesFinder extends JFrame {
         setContentPane(painelPrincipal);
         pack();
         btnSair.addActionListener(this::btnSairActionPreformed);
-        jogoFacil = new JanelaDeJogo();
-        jogoFacil.setSize(800,600);
         btnFacil.addActionListener(this::btnJogoFacil);
-        jogoMedio = new JanelaDeJogo();
-        jogoMedio.setSize(800,600);
         btnMedio.addActionListener(this::btnJogoMedio);
-
+        btnDificil.addActionListener(this::btnJogoDificil);
     }
 
     private void btnSairActionPreformed(ActionEvent e){
@@ -35,10 +29,22 @@ public class MinesFinder extends JFrame {
     }
 
     private void btnJogoFacil(ActionEvent e){
+        jogoFacil = new JanelaDeJogo();
         jogoFacil.setVisible(true);
+        jogoFacil.setSize(800,600);
+        jogoFacil.getL().setText("Jogo Fácil");
     }
     private void btnJogoMedio(ActionEvent e){
+        jogoMedio = new JanelaDeJogo();
         jogoMedio.setVisible(true);
+        jogoMedio.setSize(800,600);
+        jogoMedio.getL().setText("Jogo Médio");
+    }
+    private void btnJogoDificil(ActionEvent e){
+        jogoDificil = new JanelaDeJogo();
+        jogoDificil.setVisible(true);
+        jogoDificil.setSize(800,600);
+        jogoDificil.getL().setText("Jogo Difícil");
     }
 
     public static void main(String args[]){

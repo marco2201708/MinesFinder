@@ -16,6 +16,12 @@
           <text value="Janela de Jogo"/>
         </properties>
       </component>
+      <component id="2bc8a" class="javax.swing.JLabel" binding="l">
+        <constraints border-constraint="West"/>
+        <properties>
+          <text value="Label"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
