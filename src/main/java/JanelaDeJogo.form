@@ -8,20 +8,6 @@
       <preferredSize width="800" height="600"/>
     </properties>
     <border type="none"/>
-    <children>
-      <component id="5b459" class="javax.swing.JLabel">
-        <constraints border-constraint="North"/>
-        <properties>
-          <font name="Courier New" size="26"/>
-          <text value="Janela de Jogo"/>
-        </properties>
-      </component>
-      <component id="2bc8a" class="javax.swing.JLabel" binding="l">
-        <constraints border-constraint="West"/>
-        <properties>
-          <text value="Label"/>
-        </properties>
-      </component>
-    </children>
+    <children/>
   </grid>
 </form>
