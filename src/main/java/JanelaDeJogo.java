@@ -14,12 +14,11 @@ public class JanelaDeJogo extends JFrame {
     private CampoMinado campoMinado;
 
 
-    public JanelaDeJogo( CampoMinado campoMinado) {
-        setContentPane(painelJogo);
+    public JanelaDeJogo(CampoMinado campoMinado) {
         this.campoMinado = campoMinado;
         var largura = campoMinado.getLargura();
         var altura = campoMinado.getAltura();
-        this.botoes = new BotaoCampoMinado[largura][altura];
+        this.botoes = new BotaoCampoMinado[largura][altura];//nova matriz com [largura] por [altura] de botões
         painelJogo.setLayout(new GridLayout(altura, largura));
         // Criar e adicionar os botões à janela
         for (int coluna = 0; coluna < altura; ++coluna) {
@@ -31,20 +30,9 @@ public class JanelaDeJogo extends JFrame {
         setContentPane(painelJogo);
         // Destrói esta janela, removendo-a completamente da memória.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        // Causes this Window to be sized to fit the preferred size and layout of its subcomponents.
-        pack();
+        // Causes this Window to be sized to fit the preferred size and layouts
+        //of its subcomponents.
+                pack();
         setVisible(true);
-
-        for(int i = 0; i < this.botoes[0].length; i++) {
-            for (BotaoCampoMinado b : botoes[i]) {
-                b.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        b.setEstado(11);
-                    }
-                });
-            }
-        }
-
     }
 }
