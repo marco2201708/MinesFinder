@@ -21,9 +21,10 @@ public class JanelaDeJogo extends JFrame {
         this.botoes = new BotaoCampoMinado[largura][altura];//nova matriz com [largura] por [altura] de botões
         painelJogo.setLayout(new GridLayout(altura, largura));
         // Criar e adicionar os botões à janela
-        for (int coluna = 0; coluna < altura; ++coluna) {
-            for (int linha = 0; linha < largura; ++linha) {
+        for (int linha = 0; linha < largura; ++linha) {
+            for (int coluna = 0; coluna < altura; ++coluna){
                 botoes[linha][coluna] = new BotaoCampoMinado();
+                botoes[linha][coluna].setText("C"+coluna+"L"+linha);
                 painelJogo.add(botoes[linha][coluna]);
             }
         }

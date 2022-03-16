@@ -33,12 +33,12 @@ public class MinesFinder extends JFrame {
         jogoFacil.setSize(800,800);
     }
     private void btnJogoMedio(ActionEvent e){
-        jogoMedio = new JanelaDeJogo(new CampoMinado(12,23,276));
+        jogoMedio = new JanelaDeJogo(new CampoMinado(16,16,40));
         jogoMedio.setVisible(true);
         jogoMedio.setSize(800,600);
     }
     private void btnJogoDificil(ActionEvent e){
-        jogoDificil = new JanelaDeJogo(new CampoMinado(16,30,480));
+        jogoDificil = new JanelaDeJogo(new CampoMinado(16,30,90));
         jogoDificil.setVisible(true);
         jogoDificil.setSize(800,600);
     }
