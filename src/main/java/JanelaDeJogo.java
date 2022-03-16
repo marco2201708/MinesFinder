@@ -23,17 +23,33 @@ public class JanelaDeJogo extends JFrame {
         // Criar e adicionar os botões à janela
         for (int linha = 0; linha < largura; ++linha) {
             for (int coluna = 0; coluna < altura; ++coluna){
-                botoes[linha][coluna] = new BotaoCampoMinado();
-                botoes[linha][coluna].setEstado(linha); //assinalar o estado com o seuvalor neste caso o valor da linha
+                botoes[linha][coluna] = new BotaoCampoMinado(linha,coluna);
+                //botoes[linha][coluna].setEstado(linha); //assinalar o estado com o seu valor neste caso o valor da linha
+                botoes[linha][coluna].addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        BotaoCampoMinado btnDoEvento = (BotaoCampoMinado) e.getSource(); //Vai buscar o elemento que originou o evento
+                        //System.out.printf("Local "+btnDoEvento.getLinha()+btnDoEvento.getColuna());
+                        campoMinado.revelarQuadricula(btnDoEvento.getLinha(), btnDoEvento.getColuna(),btnDoEvento);
+
+                        //se o estado for descoberto sem mina vamos descobrir a células vizinhas aqui o aceso é direto
+                        if(campoMinado.isJogoDerrotado() || campoMinado.isJogoTerminado()){
+                            setVisible(false);
+                        }
+
+                    }
+                });
                 painelJogo.add(botoes[linha][coluna]);
             }
         }
+
         setContentPane(painelJogo);
         // Destrói esta janela, removendo-a completamente da memória.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Causes this Window to be sized to fit the preferred size and layouts
         //of its subcomponents.
-                pack();
+        pack();
         setVisible(true);
     }
+
 }

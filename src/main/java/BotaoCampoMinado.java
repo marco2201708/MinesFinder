@@ -1,11 +1,31 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BotaoCampoMinado extends JButton {
     private int estado;
+    private int linha;
+    private int coluna;
 
-    public BotaoCampoMinado(){
+    public BotaoCampoMinado(int linha, int coluna){
         this.estado = CampoMinado.TAPADO;
+        this.linha = linha;
+        this.coluna = coluna;
+       /* this.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });*/
+    }
+
+    public int getColuna() {
+        return coluna;
+    }
+
+    public int getLinha() {
+        return linha;
     }
 
     public void setEstado(int estado) {
@@ -35,15 +55,6 @@ public class BotaoCampoMinado extends JButton {
         }
     }
 
-    /*public void revelarQuadricula(int x, int y) {
-        if (estado[x][y] < TAPADO) {
-            return;
-        }
-        if (primeiraJogada) {
-            primeiraJogada = false;
-            colocarMinas(x, y);
-        }
-        // TODO…
-    }*/
+
 
 }

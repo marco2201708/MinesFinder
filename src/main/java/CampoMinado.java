@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class CampoMinado {
@@ -39,28 +41,74 @@ public class CampoMinado {
         var aleatorio = new Random();
         var x = 0;
         var y = 0;
+        System.out.println("Coloca minas");
         for (var i = 0; i < numMinas; ++i) {
             do {
+                System.out.println(i+" "+aleatorio);
                 x = aleatorio.nextInt(largura);
                 y = aleatorio.nextInt(altura);
             } while (minas[x][y] || (x == exceptoX && y == exceptoY));
             minas[x][y] = true;
         }
+        System.out.println("Colocou todas as minas");
     }
-    public void revelarQuadricula(int x, int y) {
-        if (estado[x][y] < TAPADO) {
+    public void revelarQuadricula(int x, int y, BotaoCampoMinado botao) {
+        if (jogoTerminado || estado[x][y] < TAPADO) {
             return;
         }
         if (primeiraJogada) {
             primeiraJogada = false;
             colocarMinas(x, y);
         }
-        if(hasMina(x,y) || getEstadoQuadricula(x,y) == REBENTADO){
-            //terminar o jogo
+        if(hasMina(x,y)){
+            this.jogoTerminado = true;
+            this.jogoDerrotado = true;
+            botao.setEstado(CampoMinado.REBENTADO);
+        }
+        if(!hasMina(x,y)){
+            estado[x][y] = CampoMinado.VAZIO;
+            botao.setEstado(CampoMinado.VAZIO);
+            botao.setText(contarMinasVizinhas(x,y)+"");
+            if(contarMinasVizinhas(x,y) == 0){
 
+            }
         }
         // Efetua jogada
         // TODO…
+    }
+
+    /*private int revelarMinasVizinhas(int x, int y, BotaoCampoMinado bt) {
+        var numMinasVizinhas = 0;
+        for (var i = Math.max(0, x - 1); i < Math.min(largura, x + 2); ++i) {
+            for (var j = Math.max(0, y - 1); j < Math.min(altura, y + 2); ++j) {
+                if (minas[i][j]) {
+                    //mudar o estado do botão
+                    // CRIAR UMA MATRIZ DE BOTÕES IGUAL Á MATRIZ DE BOTOES DA JANELA DE JOGO
+                }
+            }
+        }
+        return numMinasVizinhas;
+    }*/
+
+    private int contarMinasVizinhas(int x, int y) {
+        var numMinasVizinhas = 0;
+        for (var i = Math.max(0, x - 1); i < Math.min(largura, x + 2); ++i) {
+            for (var j = Math.max(0, y - 1); j < Math.min(altura, y + 2); ++j) {
+                if (minas[i][j]) {
+                    ++numMinasVizinhas;
+                }
+            }
+        }
+        return numMinasVizinhas;
+    }
+
+
+    public boolean isJogoDerrotado() {
+        return jogoDerrotado;
+    }
+
+    public boolean isJogoTerminado() {
+        return jogoTerminado;
     }
 
     public int getEstadoQuadricula(int x, int y) {
@@ -70,27 +118,6 @@ public class CampoMinado {
     public boolean hasMina(int x, int y) {
         return minas[x][y];
     }
-
-
-    /*public void revelarQuadricula(int x, int y) {
-        if (estado[x][y] < TAPADO) {
-            return;
-        }
-        this.estado[altura][largura] = TAPADO;
-    }
-
-    private void colocarMinas(int exceptoX, int exceptoY) {
-        var aleatorio = new Random();
-        var x = 0;
-        var y = 0;
-        for (var i = 0; i < numMinas; ++i) {
-            do {
-                x = aleatorio.nextInt(largura);
-                y = aleatorio.nextInt(altura);
-            } while (minas[x][y] || (x == exceptoX && y == exceptoY));
-            minas[x][y] = true;
-        }
-    }*/
 
     public int getAltura() {
         return altura;

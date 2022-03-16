@@ -28,7 +28,7 @@ public class MinesFinder extends JFrame {
         System.exit(0);
     }
     private void btnJogoFacil(ActionEvent e){
-        jogoFacil = new JanelaDeJogo(new CampoMinado(9,9,81));
+        jogoFacil = new JanelaDeJogo(new CampoMinado(9,9,20));
         jogoFacil.setVisible(true);
         jogoFacil.setSize(800,800);
     }
