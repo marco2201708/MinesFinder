@@ -120,7 +120,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Jogo fácil"/>
+              <text value="Jogo &amp;Fácil"/>
             </properties>
           </component>
           <component id="5b1c" class="javax.swing.JButton" binding="btnMedio" default-binding="true">
@@ -128,7 +128,7 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Jogo Médio"/>
+              <text value="Jogo &amp;Médio"/>
             </properties>
           </component>
           <component id="57c44" class="javax.swing.JButton" binding="btnDificil" default-binding="true">
@@ -136,7 +136,7 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Jogo Difícil"/>
+              <text value="Jogo &amp;Difícil"/>
             </properties>
           </component>
           <component id="f85fe" class="javax.swing.JButton" binding="btnSair">
@@ -144,7 +144,7 @@
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Sair"/>
+              <text value="&amp;Sair"/>
             </properties>
           </component>
         </children>
