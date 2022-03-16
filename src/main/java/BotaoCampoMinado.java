@@ -30,6 +30,7 @@ public class BotaoCampoMinado extends JButton {
                 break;
             default:
                 setText(String.valueOf(estado));
+                //OU//setText(estado+"");
                 setBackground(Color.LIGHT_GRAY);
         }
     }

@@ -24,7 +24,7 @@ public class JanelaDeJogo extends JFrame {
         for (int linha = 0; linha < largura; ++linha) {
             for (int coluna = 0; coluna < altura; ++coluna){
                 botoes[linha][coluna] = new BotaoCampoMinado();
-                botoes[linha][coluna].setText("C"+coluna+"L"+linha);
+                botoes[linha][coluna].setEstado(linha); //assinalar o estado com o seuvalor neste caso o valor da linha
                 painelJogo.add(botoes[linha][coluna]);
             }
         }
