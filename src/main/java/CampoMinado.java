@@ -10,9 +10,9 @@ public class CampoMinado {
 
     private boolean [][] minas;
     private int[][] estado;
-    private int largura;
-    private int altura;
-    private int numMinas;
+    private final int largura;
+    private final int altura;
+    private final int numMinas;
     private boolean primeiraJogada;
     private boolean jogoTerminado;
     private boolean jogoDerrotado;
