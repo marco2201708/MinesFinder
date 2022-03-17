@@ -52,9 +52,14 @@ public class CampoMinado {
         }
         System.out.println("Colocou todas as minas");
     }
-    public void revelarQuadricula(int x, int y, BotaoCampoMinado botao) {
+    public boolean revelarQuadricula(int x, int y, BotaoCampoMinado botao) {
+
+        if(x < 0 && y < 0){
+            return false;
+        }
+
         if (jogoTerminado || estado[x][y] < TAPADO) {
-            return;
+            return false;
         }
         if (primeiraJogada) {
             primeiraJogada = false;
@@ -70,9 +75,10 @@ public class CampoMinado {
             botao.setEstado(CampoMinado.VAZIO);
             botao.setText(contarMinasVizinhas(x,y)+"");
             if(contarMinasVizinhas(x,y) == 0){
-
+                return true;
             }
         }
+        return false;
         // Efetua jogada
         // TODO…
     }

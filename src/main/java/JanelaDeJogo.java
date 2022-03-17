@@ -30,8 +30,21 @@ public class JanelaDeJogo extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         BotaoCampoMinado btnDoEvento = (BotaoCampoMinado) e.getSource(); //Vai buscar o elemento que originou o evento
                         //System.out.printf("Local "+btnDoEvento.getLinha()+btnDoEvento.getColuna());
-                        campoMinado.revelarQuadricula(btnDoEvento.getLinha(), btnDoEvento.getColuna(),btnDoEvento);
 
+                        boolean retorno = campoMinado.revelarQuadricula(btnDoEvento.getLinha(), btnDoEvento.getColuna(),btnDoEvento);
+                        if(retorno){
+                            pede_para_revelar(btnDoEvento);
+                            /*campoMinado.revelarQuadricula(btnDoEvento.getLinha(), btnDoEvento.getColuna()-1,botoes[btnDoEvento.getLinha()][btnDoEvento.getColuna()-1]);
+                            campoMinado.revelarQuadricula(btnDoEvento.getLinha(), btnDoEvento.getColuna()+1,botoes[btnDoEvento.getLinha()][btnDoEvento.getColuna()+1]);
+                            campoMinado.revelarQuadricula(btnDoEvento.getLinha()-1, btnDoEvento.getColuna(),botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()]);
+                            campoMinado.revelarQuadricula(btnDoEvento.getLinha()+1, btnDoEvento.getColuna(),botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()]);
+                            campoMinado.revelarQuadricula(btnDoEvento.getLinha()-1, btnDoEvento.getColuna()-1,botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()-1]);
+                            campoMinado.revelarQuadricula(btnDoEvento.getLinha()+1, btnDoEvento.getColuna()+1,botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()+1]);
+                            campoMinado.revelarQuadricula(btnDoEvento.getLinha()-1, btnDoEvento.getColuna()+1,botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()+1]);
+                            campoMinado.revelarQuadricula(btnDoEvento.getLinha()+1, btnDoEvento.getColuna()-1,botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()-1]);*/
+                            //Criar um método recursivo para revelar botoes
+                            //proteger os botões da borda
+                        }
                         //se o estado for descoberto sem mina vamos descobrir a células vizinhas aqui o aceso é direto
                         if(campoMinado.isJogoDerrotado() || campoMinado.isJogoTerminado()){
                             setVisible(false);
@@ -51,5 +64,39 @@ public class JanelaDeJogo extends JFrame {
         pack();
         setVisible(true);
     }
+
+    private boolean pede_para_revelar(BotaoCampoMinado btnDoEvento){
+
+        if(btnDoEvento.getLinha() < 0 && btnDoEvento.getColuna() < 0){
+            return false;
+        }
+
+        if(btnDoEvento.getColuna()-1 > -1 && campoMinado.revelarQuadricula(btnDoEvento.getLinha(), btnDoEvento.getColuna()-1,botoes[btnDoEvento.getLinha()][btnDoEvento.getColuna()-1])){
+            pede_para_revelar(botoes[btnDoEvento.getLinha()][btnDoEvento.getColuna()-1]);
+        }
+        if(btnDoEvento.getColuna()+1 < campoMinado.getAltura() && campoMinado.revelarQuadricula(btnDoEvento.getLinha(), btnDoEvento.getColuna()+1,botoes[btnDoEvento.getLinha()][btnDoEvento.getColuna()+1])){
+            pede_para_revelar(botoes[btnDoEvento.getLinha()][btnDoEvento.getColuna()+1]);
+        }
+        if(btnDoEvento.getLinha()-1 > -1 && campoMinado.revelarQuadricula(btnDoEvento.getLinha()-1, btnDoEvento.getColuna(),botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()])){
+            pede_para_revelar(botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()]);
+        }
+        if(btnDoEvento.getLinha()+1 < campoMinado.getLargura() && campoMinado.revelarQuadricula(btnDoEvento.getLinha()+1, btnDoEvento.getColuna(),botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()])){
+            pede_para_revelar(botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()]);
+        }
+        if(btnDoEvento.getLinha()-1 > -1 && btnDoEvento.getColuna()-1 > -1 && campoMinado.revelarQuadricula(btnDoEvento.getLinha()-1, btnDoEvento.getColuna()-1,botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()-1])){
+            pede_para_revelar(botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()-1]);
+        }
+        if(btnDoEvento.getLinha()+1 < campoMinado.getLargura() && btnDoEvento.getColuna()+1 < campoMinado.getAltura() && campoMinado.revelarQuadricula(btnDoEvento.getLinha()+1, btnDoEvento.getColuna()+1,botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()+1])){
+            pede_para_revelar(botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()+1]);
+        }
+        if(btnDoEvento.getColuna()+1 < campoMinado.getAltura() && btnDoEvento.getLinha()-1 > -1 && campoMinado.revelarQuadricula(btnDoEvento.getLinha()-1, btnDoEvento.getColuna()+1,botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()+1])){
+            pede_para_revelar(botoes[btnDoEvento.getLinha()-1][btnDoEvento.getColuna()+1]);
+        }
+        if(btnDoEvento.getLinha()+1 < campoMinado.getLargura() && btnDoEvento.getColuna()-1 > -1 && campoMinado.revelarQuadricula(btnDoEvento.getLinha()+1, btnDoEvento.getColuna()-1,botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()-1])){
+            pede_para_revelar(botoes[btnDoEvento.getLinha()+1][btnDoEvento.getColuna()-1]);
+        }
+        return false;
+    }
+
 
 }
